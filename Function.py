@@ -14,8 +14,7 @@ def readFile(path):
     txt = np.loadtxt(path)
     Q = int(txt[0][0])
     K = int(txt[0][1])
-    nodes = []
-    q = []
+    nodes, q = [], []
     for node in txt[1:]:
         nodes.append([int(node[0]), int(node[1])])
         q.append(int(node[2]))
@@ -41,7 +40,8 @@ def sequence(N):
     return seq
 
 # Calculates the cost of a single trip
-def cost(trip,deliv,d): #Deliver -> sum(D_i*q_i)
+    #Deliver -> ob=sum(D_i*q_i)
+def cost(trip,deliv,d): 
     c = 0
     dist = 0
     for i in range(1,len(trip)):
@@ -50,10 +50,10 @@ def cost(trip,deliv,d): #Deliver -> sum(D_i*q_i)
     return c
 
 # Calculates the objective function of a solution
-def objective(trips):
+def objective(K, trips, delivs, d):
     obj = 0
-    for trip in trips:
-        obj += cost(trip)
+    for i in range(K):
+        obj += cost(trips[i], delivs[i], d)
     return obj
 
 # For each vehicle, it finds the complete route from a specific path and its cost

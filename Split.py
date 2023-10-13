@@ -20,13 +20,13 @@ def aux(N, Q, q, d, seq):
         j = i
         while j < N-1 and load > 0:
             if i == j:
-                dist += d[0][seq[j+1]]
+                dist += d[0][seq[j + 1]]
             else:
-                dist += d[seq[j]][seq[j+1]]
-            cost += dist * q[seq[j+1]]
-            load -= q[seq[j+1]]
+                dist += d[seq[j]][seq[j + 1]]
+            cost += dist * q[seq[j + 1]]
+            load -= q[seq[j + 1]]
             if load >= 0:
-                gi.append((seq[j+1],cost))
+                gi.append((seq[j + 1],cost))
             else:
                 break
             j += 1
