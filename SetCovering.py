@@ -30,19 +30,19 @@ def setCovering(nN,K,nT,c,r,lim):
     model.update()
 
     #Optimize
-    model.setParam(GRB.Param.OutputFlag,1)
+    model.setParam(GRB.Param.OutputFlag,0)
     model.setParam(GRB.Param.TimeLimit,lim)
     tiempo=time.time()
     model.optimize()
     tiempo=time.time()-tiempo
 
     #Results
-    print('-------------------------------------------')
-    print('My model')
-    print('Objective = \t', int(model.objVal))
-    print('Gap = \t\t', model.MIPGap*100)
-    print('time = \t\t',tiempo)
-    print('-------------------------------------------')
+    # print('-------------------------------------------')
+    # print('My model')
+    # print('Objective = \t', int(model.objVal))
+    # print('Gap = \t\t', model.MIPGap*100)
+    # print('time = \t\t',tiempo)
+    # print('-------------------------------------------')
 
     ans=[]
     for i in T:
